@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    }
+
+    pre, code {
+      background-color: rgb(50, 50, 50);
+      color: white;
+      border-radius: 5px;
+      border-color: rgb(100, 100, 100);
+      border-style: solid;
+      align-text: left;
+    }
+
+    #comment {
+      color: rgb(120, 120, 120);
+    }
+    #keyword {
+      color: rgb(250, 85, 255)
+    }
+
+    #ponctuaction {
+      color: rgb(145, 145, 145);
+    }
+
+    #function_call {
+      color: rgb(0, 160, 185);
+    }
+
+    #string {
+      color: rgb(0, 200, 120);
+    }
+  </style>
+</head>
+<body>
+  <gton
+    function lua_syntax_highlight(nodetype, value)
+      return ganiton.HTML.span {id=nodetype} {value}
+    end
+
+    local doc = {
+      ganiton.HTML.pre {
+        lua_syntax_highlight("comment", "--this is a comment"),
+        lua_syntax_highlight("string", "\"this is a string\"")
+      }
+    }
+
+    return ganiton.doc_concat(doc, "\n  ")
+  >
+</body>
+</html>
