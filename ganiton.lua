@@ -1,3 +1,5 @@
+local oldenv = _ENV
+
 ---@diagnostic disable: undefined-field
 local success, socket = pcall(require, "socket")
 
@@ -20,6 +22,10 @@ if not success then
   ganiton_error("couldn't find `socket` module with require which is required by `ganiton.Socket` module")
 end
 
+--[[
+Ganiton
+=======
+]]--
 local Ganiton = {
   JSON = {},
   Socket = {},
@@ -818,16 +824,7 @@ Ganiton.DB = db
 
 --[[ GTON ]]
 
-local gton_env = {
-  tostring = tostring,
-  tonumber = tonumber,
-  print = print,
-  ganiton = Ganiton,
-  table = table,
-  math = math,
-  string = string,
-  coroutine = coroutine
-}
+oldenv.ganiton = Ganiton
 
 ---@param src string
 ---@return string
@@ -843,7 +840,7 @@ end
 ---@param src string
 ---@return string
 local function eval_gton_src(src)
-  local out = load(src, "gton_eval", "t", gton_env)()
+  local out = load(src, "gton_eval", "t", oldenv)()
   return out == nil and "" or out
 end
 
