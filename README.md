@@ -30,3 +30,11 @@ Copy and paste ganiton.lua in whatever folder you want and import it.
 - [DB](./docs/db.md) Read and write data from disk.
 
 - [Gton](./docs/preprocessor.md) Write Lua inside HTML.
+
+# Todos
+
+  1. Lua tables to Cascading style sheets.
+
+  2. Support for multiple preprocessor tags.
+
+  3. More examples.

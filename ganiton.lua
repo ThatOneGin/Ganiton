@@ -601,11 +601,11 @@ end
 function private.serialize_table(tbl)
   local result = ""
   for key, value in pairs(tbl) do
-      if type(value) == "table" then
-          result = result .. private.serialize_table(value)
-      else
-          result = result .. key .. "=" .. tostring(value) .. "\n"
-      end
+    if type(value) == "table" then
+      result = result .. private.serialize_table(value)
+    else
+      result = result .. key .. "=" .. tostring(value) .. "\n"
+    end
   end
   return result
 end
@@ -613,8 +613,8 @@ end
 function private.parse_table(data_str)
   local tbl = {}
   for line in data_str:gmatch("[^\n]+") do
-      local key, value = line:match("([^=]+)=([^=]+)")
-      tbl[key] = value
+    local key, value = line:match("([^=]+)=([^=]+)")
+    tbl[key] = value
   end
   return tbl
 end
@@ -804,13 +804,13 @@ return ganiton.doc_concat(doc, "\n")
 ---@param node HTMLNode[]
 ---@return string
 Ganiton.doc_concat = function(node, delim)
-	delim = delim or ""
-	local out = ""
-	for i, child in pairs(node) do
-  	out = out .. tostring(child) .. delim
-	end
+  delim = delim or ""
+  local out = ""
+  for i, child in pairs(node) do
+    out = out .. tostring(child) .. delim
+  end
   out = out:sub(1, #out-#delim)
-	return out
+  return out
 end
 
 Ganiton.Socket.HTTP_header = private.HTTP_header
